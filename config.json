@@ -1,7 +1,9 @@
 {
-    "input_folder_path": "practicedata",
+    "input_folder_path_0": "practicedata",
+    "input_folder_path": "sourcedata",
     "output_folder_path": "ingesteddata",
     "test_data_path": "testdata",
-    "output_model_path": "practicemodels",
+    "output_model_path_0": "practicemodels",
+    "output_model_path": "models",
     "prod_deployment_path": "production_deployment"
 }

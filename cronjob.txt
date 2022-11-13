@@ -1,0 +1,2 @@
+10 * * * * python /home/bobby/codes/dynamic_risk_asessment_system/app.py && python /home/bobby/codes/dynamic_risk_asessment_system/fullprocess.py
+
