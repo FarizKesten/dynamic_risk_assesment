@@ -14,6 +14,7 @@ with open('config.json','r') as f:
 
 test_data_path = os.path.join(config['test_data_path'])
 prod_deployment_path = os.path.join(config['prod_deployment_path'])
+model_path = os.path.join(config['output_model_path'])
 
 
 #Call each API endpoint and store the responses
@@ -35,7 +36,7 @@ response4 = requests.get(URL + "diagnostics")
 #write the responses to your workspace
 
 logging.info("Saving results to apireturns.txt")
-with open(os.path.join(prod_deployment_path, 'apireturns.txt'), 'w') as file:
+with open(os.path.join(model_path, 'apireturns.txt'), 'w') as file:
     file.write('Prediction result\n')
     file.write(response1.text)
     file.write('\nScoring result\n')

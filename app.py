@@ -32,12 +32,9 @@ def index():
 
 
 @app.route("/prediction", methods=['POST','OPTIONS'])
-# @app.route("/prediction", methods=['GET','OPTIONS'])
 def predict():
     #call the prediction function you created in Step 3
     file = request.get_json(force=True)['file']
-    # filepath = test_data_path
-    # df = pd.read_csv(os.path.join(filepath, 'testdata.csv'))
     df = pd.read_csv(file)
     X = df.drop(['corporation', 'exited'], axis=1)
 
