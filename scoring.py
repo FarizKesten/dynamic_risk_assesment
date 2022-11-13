@@ -45,11 +45,12 @@ def score_model():
     with open(os.path.join(output_model_path, 'latestscore.txt'), 'w') as file:
         file.write(f"f1 score : {f1_score}")
 
+    return f1_score
+
 
 if __name__ == '__main__':
     logging.info("Determine model score")
     score_model()
-
 
 
 

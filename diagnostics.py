@@ -60,7 +60,7 @@ def calc_missing_data():
         missing_list[col] = percentage
     return missing_list
 
-def calculate_timing(script, loop=10):
+def calculate_timing(script, loop=5):
     logging.info("get the mean execution time of %s, run for %s loops", script, loop)
     timing = []
     for i in range(loop):
@@ -79,12 +79,20 @@ def execution_time():
     return [training_time, ingestion_time]
 
 ##################Function to check dependencies
-def outdated_packages_list():
+def check_outdated_packages_list():
     logging.info("Check outdated packages")
     dependencies = subprocess.run (
         ['pip', 'list', '--outdated', '../requirements.txt'],
         capture_output=True)
-    return dependencies.stdout.decode('utf-8')
+
+    dep = dependencies.stdout.decode('utf-8').split('\n')
+    data = []
+    for i in range(2, len(dep)):
+        temp = ([x for x in dep[i].split(' ') if x != ''])
+        if temp:
+            data.append({'package': temp[0], 'current_version': temp[1], 'latest_version': temp[2]})
+
+    return data
 
 
 if __name__ == '__main__':
@@ -93,9 +101,10 @@ if __name__ == '__main__':
     X = df_test.drop(['exited', 'corporation'], axis=1)
 
     print("[RESULTS]: model prediction: ", model_predictions(X))
+    print("[RESULTS]: calc missing data: ", calc_missing_data())
     print("[RESULTS]: dataframe summary: ", dataframe_summary())
     print("[RESULTS]: execution times[s]: ", execution_time())
-    print("[RESULTS]: outdated-packages: ", outdated_packages_list())
+    print("[RESULTS]: outdated-packages: ", check_outdated_packages_list())
 
 
 
