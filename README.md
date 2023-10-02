@@ -1,3 +1,7 @@
+# Model that asses risk of clients exiting contracts
+Trained using simple logistic regression
+
+
 # Using App.py
 
 ## 1. run the app using script
